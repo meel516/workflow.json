@@ -1,0 +1,927 @@
+{
+  "input": {
+    "workflow": {
+      "3": {
+        "inputs": {
+          "seed": 20,
+          "steps": [
+            "103",
+            0
+          ],
+          "cfg": [
+            "105",
+            0
+          ],
+          "sampler_name": "uni_pc",
+          "scheduler": "simple",
+          "denoise": 1,
+          "model": [
+            "54",
+            0
+          ],
+          "positive": [
+            "93",
+            0
+          ],
+          "negative": [
+            "93",
+            1
+          ],
+          "latent_image": [
+            "93",
+            2
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "6": {
+        "inputs": {
+          "text": "The man is playing the guitar. He looks down at his hands playing the guitar and sings affectionately and gently.",
+          "clip": [
+            "38",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+          "clip": [
+            "38",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "37": {
+        "inputs": {
+          "filename": "wan2.2_s2v_14B_fp8_scaled.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "38": {
+        "inputs": {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "39": {
+        "inputs": {
+          "filename": "wan_2.1_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "52": {
+        "inputs": {
+          "image": "video_wan2_2_14B_s2v_reference_image.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "54": {
+        "inputs": {
+          "value": 8,
+          "model": [
+            "107",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "56": {
+        "inputs": {
+          "audio_encoder": [
+            "57",
+            0
+          ],
+          "audio": [
+            "58",
+            0
+          ]
+        },
+        "class_type": "AudioEncoderEncode",
+        "_meta": {
+          "title": "AudioEncoderEncode"
+        }
+      },
+      "57": {
+        "inputs": {
+          "filename": "wav2vec2_large_english_fp16.safetensors"
+        },
+        "class_type": "AudioEncoderLoader",
+        "_meta": {
+          "title": "AudioEncoderLoader"
+        }
+      },
+      "58": {
+        "inputs": {
+          "filename": "video_wan2_2_14B_s2v_input_audio.MP3"
+        },
+        "class_type": "LoadAudio",
+        "_meta": {
+          "title": "LoadAudio"
+        }
+      },
+      "79": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "54",
+            0
+          ],
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ],
+          "video_latent": [
+            "3",
+            0
+          ],
+          "audio_encoder_output": [
+            "56",
+            0
+          ],
+          "ref_image": [
+            "52",
+            0
+          ],
+          "steps": [
+            "103",
+            0
+          ],
+          "cfg": [
+            "105",
+            0
+          ],
+          "length": [
+            "104",
+            0
+          ]
+        },
+        "class_type": "ad3f1d6b-f6de-4f22-abcf-caeed4bf8ce4",
+        "_meta": {
+          "title": "ad3f1d6b-f6de-4f22-abcf-caeed4bf8ce4"
+        }
+      },
+      "80": {
+        "inputs": {
+          "samples": [
+            "95",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "82": {
+        "inputs": {
+          "value": 16,
+          "images": [
+            "96",
+            0
+          ],
+          "audio": [
+            "58",
+            0
+          ]
+        },
+        "class_type": "CreateVideo",
+        "_meta": {
+          "title": "CreateVideo"
+        }
+      },
+      "85": {
+        "inputs": {
+          "value": 250,
+          "model": [
+            "54",
+            0
+          ],
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ],
+          "video_latent": [
+            "79",
+            0
+          ],
+          "audio_encoder_output": [
+            "56",
+            0
+          ],
+          "ref_image": [
+            "52",
+            0
+          ],
+          "steps": [
+            "103",
+            0
+          ],
+          "cfg": [
+            "105",
+            0
+          ],
+          "length": [
+            "104",
+            0
+          ]
+        },
+        "class_type": "866cdb67-cb97-4a54-8738-e9ece4f5f25f",
+        "_meta": {
+          "title": "866cdb67-cb97-4a54-8738-e9ece4f5f25f"
+        }
+      },
+      "87": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "54",
+            0
+          ],
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ],
+          "video_latent": [
+            "85",
+            0
+          ],
+          "audio_encoder_output": [
+            "56",
+            0
+          ],
+          "ref_image": [
+            "52",
+            0
+          ],
+          "steps": [
+            "103",
+            0
+          ],
+          "cfg": [
+            "105",
+            0
+          ],
+          "length": [
+            "104",
+            0
+          ]
+        },
+        "class_type": "92cfa20b-adb6-4f00-8596-f14b534cf926",
+        "_meta": {
+          "title": "92cfa20b-adb6-4f00-8596-f14b534cf926"
+        }
+      },
+      "93": {
+        "inputs": {
+          "value": 640,
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ],
+          "audio_encoder_output": [
+            "56",
+            0
+          ],
+          "ref_image": [
+            "52",
+            0
+          ],
+          "length": [
+            "104",
+            0
+          ]
+        },
+        "class_type": "WanSoundImageToVideo",
+        "_meta": {
+          "title": "WanSoundImageToVideo"
+        }
+      },
+      "94": {
+        "inputs": {
+          "text": "t",
+          "samples": [
+            "87",
+            0
+          ]
+        },
+        "class_type": "LatentCut",
+        "_meta": {
+          "title": "LatentCut"
+        }
+      },
+      "95": {
+        "inputs": {
+          "text": "t",
+          "samples1": [
+            "94",
+            0
+          ],
+          "samples2": [
+            "87",
+            0
+          ]
+        },
+        "class_type": "LatentConcat",
+        "_meta": {
+          "title": "LatentConcat"
+        }
+      },
+      "96": {
+        "inputs": {
+          "value": 0,
+          "image": [
+            "80",
+            0
+          ],
+          "batch_index": [
+            "100",
+            0
+          ]
+        },
+        "class_type": "ImageFromBatch",
+        "_meta": {
+          "title": "ImageFromBatch"
+        }
+      },
+      "100": {
+        "inputs": {
+          "value": 3
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Batch sizes"
+        }
+      },
+      "103": {
+        "inputs": {
+          "value": 4
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Steps"
+        }
+      },
+      "104": {
+        "inputs": {
+          "value": 77
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Chunk Length"
+        }
+      },
+      "105": {
+        "inputs": {
+          "value": 1
+        },
+        "class_type": "PrimitiveFloat",
+        "_meta": {
+          "title": "CFG"
+        }
+      },
+      "107": {
+        "inputs": {
+          "filename": "wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors",
+          "model": [
+            "37",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "113": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "82",
+            0
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "147": {
+        "inputs": {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "148": {
+        "inputs": {
+          "samples": [
+            "156",
+            0
+          ],
+          "vae": [
+            "150",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "149": {
+        "inputs": {
+          "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+          "clip": [
+            "147",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "150": {
+        "inputs": {
+          "filename": "wan_2.1_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "151": {
+        "inputs": {
+          "filename": "wav2vec2_large_english_fp16.safetensors"
+        },
+        "class_type": "AudioEncoderLoader",
+        "_meta": {
+          "title": "AudioEncoderLoader"
+        }
+      },
+      "152": {
+        "inputs": {
+          "seed": 20,
+          "steps": [
+            "177",
+            0
+          ],
+          "cfg": [
+            "178",
+            0
+          ],
+          "sampler_name": "uni_pc",
+          "scheduler": "simple",
+          "denoise": 1,
+          "model": [
+            "154",
+            0
+          ],
+          "positive": [
+            "153",
+            0
+          ],
+          "negative": [
+            "153",
+            1
+          ],
+          "latent_image": [
+            "153",
+            2
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "153": {
+        "inputs": {
+          "value": 640,
+          "positive": [
+            "159",
+            0
+          ],
+          "negative": [
+            "149",
+            0
+          ],
+          "vae": [
+            "150",
+            0
+          ],
+          "audio_encoder_output": [
+            "173",
+            0
+          ],
+          "ref_image": [
+            "160",
+            0
+          ],
+          "length": [
+            "166",
+            0
+          ]
+        },
+        "class_type": "WanSoundImageToVideo",
+        "_meta": {
+          "title": "WanSoundImageToVideo"
+        }
+      },
+      "154": {
+        "inputs": {
+          "value": 8,
+          "model": [
+            "161",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "155": {
+        "inputs": {
+          "value": 0,
+          "image": [
+            "148",
+            0
+          ],
+          "batch_index": [
+            "169",
+            0
+          ]
+        },
+        "class_type": "ImageFromBatch",
+        "_meta": {
+          "title": "ImageFromBatch"
+        }
+      },
+      "156": {
+        "inputs": {
+          "text": "t",
+          "samples1": [
+            "157",
+            0
+          ],
+          "samples2": [
+            "174",
+            0
+          ]
+        },
+        "class_type": "LatentConcat",
+        "_meta": {
+          "title": "LatentConcat"
+        }
+      },
+      "157": {
+        "inputs": {
+          "text": "t",
+          "samples": [
+            "174",
+            0
+          ]
+        },
+        "class_type": "LatentCut",
+        "_meta": {
+          "title": "LatentCut"
+        }
+      },
+      "159": {
+        "inputs": {
+          "text": "The man is playing the guitar. He looks down at his hands playing the guitar and sings affectionately and gently.",
+          "clip": [
+            "147",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "160": {
+        "inputs": {
+          "image": "video_wan2_2_14B_s2v_reference_image.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "161": {
+        "inputs": {
+          "filename": "wan2.2_s2v_14B_fp8_scaled.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "162": {
+        "inputs": {
+          "filename": "video_wan2_2_14B_s2v_input_audio.MP3"
+        },
+        "class_type": "LoadAudio",
+        "_meta": {
+          "title": "LoadAudio"
+        }
+      },
+      "165": {
+        "inputs": {
+          "value": 250,
+          "model": [
+            "154",
+            0
+          ],
+          "positive": [
+            "159",
+            0
+          ],
+          "negative": [
+            "149",
+            0
+          ],
+          "vae": [
+            "150",
+            0
+          ],
+          "video_latent": [
+            "172",
+            0
+          ],
+          "audio_encoder_output": [
+            "173",
+            0
+          ],
+          "ref_image": [
+            "160",
+            0
+          ],
+          "steps": [
+            "177",
+            0
+          ],
+          "cfg": [
+            "178",
+            0
+          ],
+          "length": [
+            "166",
+            0
+          ]
+        },
+        "class_type": "d7670b5a-34e9-40f6-ac84-ec52996e52f3",
+        "_meta": {
+          "title": "d7670b5a-34e9-40f6-ac84-ec52996e52f3"
+        }
+      },
+      "166": {
+        "inputs": {
+          "value": 77
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Chunk Length"
+        }
+      },
+      "167": {
+        "inputs": {
+          "value": 16,
+          "images": [
+            "155",
+            0
+          ],
+          "audio": [
+            "162",
+            0
+          ]
+        },
+        "class_type": "CreateVideo",
+        "_meta": {
+          "title": "CreateVideo"
+        }
+      },
+      "168": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "167",
+            0
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "169": {
+        "inputs": {
+          "value": 3
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Batch sizes"
+        }
+      },
+      "172": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "154",
+            0
+          ],
+          "positive": [
+            "159",
+            0
+          ],
+          "negative": [
+            "149",
+            0
+          ],
+          "vae": [
+            "150",
+            0
+          ],
+          "video_latent": [
+            "152",
+            0
+          ],
+          "audio_encoder_output": [
+            "173",
+            0
+          ],
+          "ref_image": [
+            "160",
+            0
+          ],
+          "steps": [
+            "177",
+            0
+          ],
+          "cfg": [
+            "178",
+            0
+          ],
+          "length": [
+            "166",
+            0
+          ]
+        },
+        "class_type": "bdee126d-2d92-4d01-9e74-9118a9d609c5",
+        "_meta": {
+          "title": "bdee126d-2d92-4d01-9e74-9118a9d609c5"
+        }
+      },
+      "173": {
+        "inputs": {
+          "audio_encoder": [
+            "151",
+            0
+          ],
+          "audio": [
+            "162",
+            0
+          ]
+        },
+        "class_type": "AudioEncoderEncode",
+        "_meta": {
+          "title": "AudioEncoderEncode"
+        }
+      },
+      "174": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "154",
+            0
+          ],
+          "positive": [
+            "159",
+            0
+          ],
+          "negative": [
+            "149",
+            0
+          ],
+          "vae": [
+            "150",
+            0
+          ],
+          "video_latent": [
+            "165",
+            0
+          ],
+          "audio_encoder_output": [
+            "173",
+            0
+          ],
+          "ref_image": [
+            "160",
+            0
+          ],
+          "steps": [
+            "177",
+            0
+          ],
+          "cfg": [
+            "178",
+            0
+          ],
+          "length": [
+            "166",
+            0
+          ]
+        },
+        "class_type": "51b3a856-6e10-44f8-94d7-2a92a39c9707",
+        "_meta": {
+          "title": "51b3a856-6e10-44f8-94d7-2a92a39c9707"
+        }
+      },
+      "177": {
+        "inputs": {
+          "value": 20
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Steps"
+        }
+      },
+      "178": {
+        "inputs": {
+          "value": 6
+        },
+        "class_type": "PrimitiveFloat",
+        "_meta": {
+          "title": "CFG"
+        }
+      }
+    }
+  }
+}
